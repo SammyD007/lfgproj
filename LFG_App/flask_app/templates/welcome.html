@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <!-- Set character encoding and viewport -->
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <!-- Bootstrap CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
+
+    <!-- Page title -->
+    <title>Welcome</title>
+</head>
+<style>
+    /* Page styling */
+    body {
+        background-color: #464646;
+        padding-top: 5rem;
+        position: relative;
+    }
+
+    /* Container for the content */
+    .container {
+        max-width: 800px; /* Increased the max-width to accommodate the content */
+        padding: 2rem;
+        margin: 0 auto;
+        background-color: #7c7c7c;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    /* Center-align text */
+    .text-center {
+        text-align: center;
+    }
+
+    /* Styling for the main heading */
+    .container h1 {
+        font-size: 2.5rem;
+        color: #000000;
+        margin-bottom: 2rem;
+    }
+
+    /* Center-align elements */
+    .center-elements {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .nav-buttons {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn-primary {
+        margin: 0; /* Remove default margin from buttons */
+    }
+</style>
+</head>
+
+<script>
+    // JavaScript to handle the form submission
+    document.addEventListener('DOMContentLoaded', function () {
+        const gameFilterSelect = document.getElementById('game-filter');
+        const form = document.getElementById('results-form');
+
+        gameFilterSelect.addEventListener('change', function () {
+            const selectedGameId = gameFilterSelect.value;
+            form.action = `/results/${selectedGameId}`;
+        });
+    });
+</script>
+
+<body>
+    <div class="nav-buttons">
+        <form action="/logout">
+            <button class="btn btn-primary" type="submit">Logout</button>
+        </form>
+        <form action="/welcome" method="get">
+            <button class="btn btn-primary" type="submit">Home</button>
+        </form>
+        <form action="/profile" method="get">
+            <button class="btn btn-primary" type="submit">Profile</button>
+        </form>
+    </div>
+    <div class="container">
+        <!-- Main heading -->
+        <h1 class="text-center">Welcome, {{user_name}}!</h1>
+        <!-- Centered content -->
+        <div class="center-elements">
+            <!-- Label and dropdown box -->
+            <label for="game-filter" class="form-label">LFG for:</label>
+            <select class="form-select" id="game-filter">
+                {% for game in games %}
+                <option value="{{ game.id }}">{{ game.name }}</option>
+                {% endfor %}
+            </select>
+            <form id="results-form" method="get">
+                <button type="submit" class="btn btn-primary mt-3">Go to Results</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

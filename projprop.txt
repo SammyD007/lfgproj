@@ -1,0 +1,16 @@
+# Name: 
+    Sam Dalrymple
+# Stack: 
+    Python
+# Github Repo Link: 
+    https://github.com/SammyD007/lfgproj.git
+# Proj Name: 
+    LFG App
+# Proj Description: 
+    App for people to create a calendar type thing for when they are available and for what games they play
+# Minimum Viable Product: 
+    Login/Reg page; page for user profile; page to add times available, games played, play type (casual, comp) 
+    skill level( -Bronze -, - Silver -, etc) via buttons to other pages; page with table would show available 
+    player to game with
+# Bonus Features: 
+    Using bootstrap

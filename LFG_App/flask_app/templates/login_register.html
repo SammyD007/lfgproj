@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <!-- this is specifically for the icon with the password require -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #212529;
+            color: #ffffff;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .rounded-container {
+            border-radius: 10px;
+            background-color: #797878;
+            color: #ffffff;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .password-info-icon {
+            position: relative;
+        }
+
+        .password-info-icon:hover .password-requirements {
+            display: block;
+        }
+
+        .password-requirements {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+            width: 300px;
+            padding: 10px;
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="bg-dark p-4 rounded-container">
+                    <h3 class="text-light mb-4">Registration</h3>
+                    <form action="/register" , method="post">
+                        {% with messages = get_flashed_messages() %} <!-- declare a variable called messages -->
+                        {% if messages %} <!-- check if there are any messages -->
+                        {% for message in messages %} <!-- loop through the messages -->
+                        <p>{{message}}</p> <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label text-light">First Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name"
+                                placeholder="Enter your first name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label text-light">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name"
+                                placeholder="Enter your last name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-light">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label text-light">
+                                Password
+                                <span class="password-info-icon">
+                                    <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+                                    <div class="password-requirements">
+                                        <h6>Password Requirements:</h6>
+                                        <ul>
+                                            <li>Between 8-15 characters long</li>
+                                            <li>Contains at least one uppercase letter (A-Z)</li>
+                                            <li>Contains at least one lowercase letter (a-z)</li>
+                                            <li>Contains at least one digit (0-9)</li>
+                                            <li>Contains at least one special character from @$!%*#?&</li>
+                                        </ul>
+                                    </div>
+                                </span>
+                            </label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Enter your password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label text-light">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword"
+                                placeholder="Confirm your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="bg-dark p-4 rounded-container">
+                    <h3 class="text-light mb-4">Login</h3>
+                    <form action="/login", method="post">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label text-light">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label text-light">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password"
+                                placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Welcome</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
