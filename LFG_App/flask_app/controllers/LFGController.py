@@ -81,11 +81,6 @@ def add_game():
     user_id = session.get('user_id')
     game_name = request.form['game_name']
 
-    # Get the game_id by querying the games table
-    game_id = Game.get_game_id_by_name(game_name)
+    Game.add_game(user_id, game_name)
 
-    # Add the user-game relationship to the user_has_games table
-    if game_id:
-        Game.add_user_game_relation(user_id, game_id)
-    
     return redirect('/profile')

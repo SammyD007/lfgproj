@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect</title>
-    <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
             color: #ffffff;
         }
-
-        .navbar {
-            background-color: #181818;
-        }
-
         .page-container {
             padding: 20px;
         }
@@ -41,32 +35,32 @@
             margin-top: 20px;
             height: 50vh;
         }
+
+        .nav-buttons {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+    
+        .home-button {
+            margin-right: 0.5rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar code -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">LFG App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/connect">Connect</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="nav-buttons">
+        <form action="/logout">
+            <button class="btn btn-primary" type="submit">Logout</button>
+        </form>
+        <form action="/welcome" method="get" class="home-button">
+            <button class="btn btn-primary" type="submit">Home</button>
+        </form>
+        <form action="/profile" method="get" class="home-button">
+            <button class="btn btn-primary" type="submit">Profile</button>
+        </form>
+    </div>
 
     <div class="page-container">
         <div class="content-container">
@@ -74,13 +68,11 @@
             <p class="mb-4">I tried to figure out how to DMs but it'd be something akin to building a small social media network and I do not have the time to finish that in the allotted window so instead enjoy this:</p>
             
             <div class="embed-responsive embed-responsive-16by9">
-                <!-- Replace the video URL with the YouTube video URL you want to embed -->
                 <iframe class="embed-responsive-item" src="https://youtu.be/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

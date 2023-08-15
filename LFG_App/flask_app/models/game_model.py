@@ -35,22 +35,6 @@ class Game:
             return db_response[0]['id']
         return None
 
-    @classmethod
-    def add_user_game_relation(cls, user_id, game_name):
-        game_query = '''SELECT id FROM games WHERE name = %(game_name)s;'''  # Retrieve the game's id
-        game_data = {'game_name': game_name}
-        game_result = connectToMySQL(db).query_db(game_query, game_data)
-        
-        if not game_result:
-            return None  # Return None if the game is not found
-
-        game_id = game_result[0]['id']
-
-        query = '''INSERT INTO user_has_games (user_id, game_id) VALUES (%(user_id)s, %(game_id)s);'''
-        user_game_data = {'user_id': user_id, 'game_id': game_id}
-        db_response = connectToMySQL(db).query_db(query, user_game_data)
-
-        return db_response
     
     @classmethod
     def get_results(cls, game_id):
@@ -67,15 +51,15 @@ class Game:
         game_query = '''SELECT id FROM games WHERE name = %(game_name)s;'''
         game_data = {'game_name': game_name}
         game_result = connectToMySQL(db).query_db(game_query, game_data)
-        
+
         if not game_result:
             print(f"Game '{game_name}' not found.")
             return
-        
+
         game_id = game_result[0]['id']
-        
+
         query = '''INSERT INTO user_has_games (user_id, game_id) VALUES (%(user_id)s, %(game_id)s);'''
         user_game_data = {'user_id': user_id, 'game_id': game_id}
         db_response = connectToMySQL(db).query_db(query, user_game_data)
-        
+
         return db_response
